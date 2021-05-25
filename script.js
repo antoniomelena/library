@@ -7,3 +7,4 @@ const myLibrary = [
 function Book() {}
 
 function addBookToLibrary() {}
+console.log("hello");
