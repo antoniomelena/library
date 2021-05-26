@@ -16,3 +16,11 @@ const bookFour = new Book("A Little Life", "Hanya Yanagihara", 800);
 addBookToLibrary(bookOne);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookFour);
+
+document.getElementById("bookButton").addEventListener("click", () => {
+  document.querySelector(".bg-modal").style.display = "flex";
+});
+
+document.querySelector(".close").addEventListener("click", () => {
+  document.querySelector(".bg-modal").style.display = "none";
+});
