@@ -9,17 +9,38 @@
   <body>
     <h1>Library</h1>
     <a href="#" id="bookButton" class="button">Add A Book</a>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Number of Pages</th>
+        <th>Read?</th>
+      </tr>
+
+      <tbody id="libraryTable"></tbody>
+    </table>
+
     <div class="bg-modal">
       <div class="modal-content">
         <div class="close">+</div>
 
-        <img src="https://img.icons8.com/clouds/2x/library.png" alt="Library" />
+        <img
+          src="https://img.icons8.com/clouds/2x/library.png"
+          alt="Library Icon"
+        />
 
         <form action="">
-          <input type="text" placeholder="Title" required />
-          <input type="text" placeholder="Author" required />
-          <input type="text" placeholder="Number of Pages" required />
-          <a href="" class="button">Submit</a>
+          <input id="title" type="text" placeholder="Title" required />
+          <input id="author" type="text" placeholder="Author" required />
+          <input
+            id="pages"
+            type="number"
+            min="0"
+            placeholder="Number of Pages"
+            required
+          />
+          <a href="" class="button" type="submit">Submit</a>
         </form>
       </div>
     </div>

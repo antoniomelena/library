@@ -64,3 +64,31 @@ img {
 .button:active {
   background-color: #005544;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table th {
+  text-align: left;
+  background-color: #3a6070;
+  color: #fff;
+  padding: 4px 30px 4px 8px;
+}
+
+table td {
+  border: 1px solid rgb(90, 94, 99);
+  padding: 4px 8px;
+}
+
+table tr:hover {
+  color: white;
+}
+
+table tr:nth-child(odd) td {
+  background-color: rgb(194, 199, 204);
+}
+
+table tr:nth-child(even) td {
+  background-color: rgb(131, 133, 136);
+}
