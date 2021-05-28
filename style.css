@@ -1,3 +1,12 @@
+body {
+  background-color: rgb(46, 46, 46);
+}
+
+h1 {
+  color: white;
+  margin: 2rem;
+}
+
 .bg-modal {
   width: 100%;
   height: 100%;
@@ -13,7 +22,7 @@
 .modal-content {
   width: 500px;
   height: 300px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.85);
   border-radius: 4px;
   text-align: center;
   padding: 20px;
@@ -41,19 +50,18 @@ img {
 
 .button {
   display: inline;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-decoration: none;
-  width: 200px;
-  height: 200px;
   color: white;
-  padding: 5px;
+  padding: 1rem;
   background-color: #009579;
   border: none;
   border-radius: 4px;
+  margin: 2rem;
   overflow: hidden;
   font-family: "Quicksand", Times, serif;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 100;
   cursor: pointer;
 }
 
@@ -65,30 +73,37 @@ img {
   background-color: #005544;
 }
 
-table {
-  border-collapse: collapse;
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  padding: 2rem;
 }
 
-table th {
-  text-align: left;
-  background-color: #3a6070;
-  color: #fff;
-  padding: 4px 30px 4px 8px;
+.book-card {
+  padding-top: 2rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.75);
+  text-align: center;
 }
 
-table td {
-  border: 1px solid rgb(90, 94, 99);
-  padding: 4px 8px;
+.book-text {
+  padding: 0.5rem;
 }
 
-table tr:hover {
-  color: white;
+.read-button {
+  background-color: cadetblue;
 }
 
-table tr:nth-child(odd) td {
-  background-color: rgb(194, 199, 204);
+.read-button:hover {
+  background-color: darkred;
 }
 
-table tr:nth-child(even) td {
-  background-color: rgb(131, 133, 136);
+.not-read-button {
+  background-color: firebrick;
+}
+
+.not-read-button:hover {
+  background-color: rgb(87, 144, 146);
 }
