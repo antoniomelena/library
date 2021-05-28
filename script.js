@@ -42,11 +42,11 @@ function openModal() {
 
 addBook.addEventListener("click", openModal);
 
-// fillTable(myLibrary);
-
-// addBook.addEventListener("click", () => {
-//   document.querySelector(".bg-modal").style.display = "flex";
-// });
+function fillLibrary(myLibrary) {
+  for (const bookIdx in myLibrary) {
+    createBookCard(myLibrary[bookIdx]);
+  }
+}
 
 document.querySelector(".close").addEventListener("click", () => {
   document.querySelector(".bg-modal").style.display = "none";
