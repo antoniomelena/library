@@ -38,6 +38,7 @@ document.querySelector(".close").addEventListener("click", () => {
   document.querySelector(".bg-modal").style.display = "none";
 });
 
+const inputs = document.querySelectorAll("input");
 const booksGrid = document.querySelector(".books-grid");
 
 function createBookCard(book) {
@@ -75,6 +76,8 @@ function createBookCard(book) {
   bookCard.appendChild(pages);
   bookCard.appendChild(readButton);
   bookCard.appendChild(removeButton);
+
+  inputs.forEach((input) => (input.value = ""));
 }
 
 function fillLibrary(library) {
