@@ -19,33 +19,20 @@
           src="https://img.icons8.com/clouds/2x/library.png"
           alt="Library Icon"
         />
-        <input
-          id="title"
-          name="title"
-          type="text"
-          placeholder="Title"
-          required
-        />
-        <input
-          id="author"
-          name="author"
-          type="text"
-          placeholder="Author"
-          required
-        />
+        <input id="title" type="text" placeholder="Title" required />
+        <input id="author" type="text" placeholder="Author" required />
         <input
           id="pages"
-          name="pages"
           type="number"
           min="0"
           placeholder="Number of Pages"
           required
         />
-        <div class="popup__is-read">
+        <div class="read-checkbox">
           <label for="is-read">Read?</label>
-          <input class="popup__checkbox" type="checkbox" id="is-read" />
+          <input type="checkbox" id="is-read" />
         </div>
-        <input class="button" type="submit" value="Submit" />
+        <button type="button" id="submitButton">Submit</button>
       </div>
     </form>
     <script src="script.js"></script>

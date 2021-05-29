@@ -1,6 +1,3 @@
-// const authorInput = document.getElementById("author");
-// const titleInput = document.getElementById("title");
-// const pagesInput = document.getElementById("pages");
 const addBook = document.getElementById("addBookButton");
 const popUp = document.querySelector(".bg-modal");
 
@@ -11,7 +8,7 @@ class Book {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    // this.read = read;
   }
 }
 
@@ -23,14 +20,9 @@ function addBookToLibrary(newBook) {
   return true;
 }
 
-const bookOne = new Book("The Song Of Achilles", "Madeline Miller", 416, false);
-const bookTwo = new Book(
-  "The Picture of Dorian Gray",
-  "Oscar Wilde",
-  176,
-  true
-);
-const bookThree = new Book("A Little Life", "Hanya Yanagihara", 800, true);
+const bookOne = new Book("The Song Of Achilles", "Madeline Miller", 416);
+const bookTwo = new Book("The Picture of Dorian Gray", "Oscar Wilde", 176);
+const bookThree = new Book("A Little Life", "Hanya Yanagihara", 800);
 addBookToLibrary(bookOne);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
@@ -41,12 +33,6 @@ function openModal() {
 }
 
 addBook.addEventListener("click", openModal);
-
-function fillLibrary(myLibrary) {
-  for (const bookIdx in myLibrary) {
-    createBookCard(myLibrary[bookIdx]);
-  }
-}
 
 document.querySelector(".close").addEventListener("click", () => {
   document.querySelector(".bg-modal").style.display = "none";
@@ -75,13 +61,13 @@ function createBookCard(book) {
   pages.textContent = `${book.pages} pages`;
   removeButton.textContent = "Delete";
   readButton.style.width = "1fr";
-  if (book.read) {
-    readButton.textContent = "Read";
-    readButton.classList.add("read-button");
-  } else {
-    readButton.textContent = "Not Read";
-    readButton.classList.add("not-read-button");
-  }
+  // if (book.read) {
+  readButton.textContent = "Read";
+  readButton.classList.add("read-button");
+  // } else {
+  //   readButton.textContent = "Not Read";
+  //   readButton.classList.add("not-read-button");
+  // }
 
   booksGrid.appendChild(bookCard);
   bookCard.appendChild(title);
@@ -90,3 +76,25 @@ function createBookCard(book) {
   bookCard.appendChild(readButton);
   bookCard.appendChild(removeButton);
 }
+
+function fillLibrary(library) {
+  for (const bookIdx in library) {
+    createBookCard(library[bookIdx]);
+  }
+}
+
+fillLibrary(myLibrary);
+
+function getInputValue() {
+  const titleInputVal = document.getElementById("title").value;
+  const authorInputVal = document.getElementById("author").value;
+  const pagesInputVal = document.getElementById("pages").value;
+
+  let createdBook = new Book(titleInputVal, authorInputVal, pagesInputVal);
+
+  createBookCard(createdBook);
+}
+
+document
+  .getElementById("submitButton")
+  .addEventListener("click", getInputValue);
