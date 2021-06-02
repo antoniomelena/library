@@ -6,18 +6,19 @@ const myLibrary = [];
 
 class Book {
   constructor(title, author, pages, read) {
-    this.title = form.title.value;
-    this.author = form.author.value;
-    this.pages = form.pages.value;
-    this.read = form.read.checked;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
 }
 
-Book.prototype.show = function () {
+Book.prototype.toggle = function () {
   this.read = !this.read;
 };
 
 function fillLibrary() {
+  resetGrid();
   const books = myLibrary;
 
   books.forEach((book) => createBookCard(book));
@@ -33,9 +34,14 @@ function addBookToLibrary(newBook) {
   return true;
 }
 
-const bookOne = new Book("The Song Of Achilles", "Madeline Miller", 416);
-const bookTwo = new Book("The Picture of Dorian Gray", "Oscar Wilde", 176);
-const bookThree = new Book("A Little Life", "Hanya Yanagihara", 800);
+const bookOne = new Book("The Song Of Achilles", "Madeline Miller", 416, false);
+const bookTwo = new Book(
+  "The Picture of Dorian Gray",
+  "Oscar Wilde",
+  176,
+  true
+);
+const bookThree = new Book("A Little Life", "Hanya Yanagihara", 800, false);
 addBookToLibrary(bookOne);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
@@ -83,12 +89,6 @@ function deleteBook(el) {
   }
 }
 
-// Event: Remove Book
-booksGrid.addEventListener("click", (e) => {
-  console.log(e.target);
-  deleteBook(e.target);
-});
-
 function createBookCard(book) {
   const bookCard = document.createElement("div");
   const title = document.createElement("h2");
@@ -110,13 +110,13 @@ function createBookCard(book) {
   pages.textContent = `${book.pages} pages`;
   deleteButton.textContent = "Delete";
   readButton.style.width = "1fr";
-  // if (book.read) {
-  readButton.textContent = "Read";
-  readButton.classList.add("read-button");
-  // } else {
-  //   readButton.textContent = "Not Read";
-  //   readButton.classList.add("not-read-button");
-  // }
+  if (book.read) {
+    readButton.textContent = "Read";
+    readButton.classList.add("read-button");
+  } else {
+    readButton.textContent = "Not Read";
+    readButton.classList.add("not-read-button");
+  }
 
   booksGrid.appendChild(bookCard);
   bookCard.appendChild(title);
@@ -126,26 +126,17 @@ function createBookCard(book) {
   bookCard.appendChild(deleteButton);
 
   clearFields();
+
+  deleteButton.addEventListener("click", (e) => {
+    deleteBook(e.target);
+  });
+
+  readButton.addEventListener("click", () => {
+    book.toggle();
+    fillLibrary();
+  });
 }
 
-// function selectedTest() {
-//   let rIndex,
-//     table = document.querySelector(".books-grid");
-//   for (let i = 0; i < table.childElementCount; i += 1) {
-//     table.childNodes[i].onclick = function () {
-//       // rIndex = this.rowIndex;
-//     };
-//   }
-// }
-
-// function deleteCard() {
-//   let table = document.querySelector(".books-grid");
-//   table.removeChild(table.childNodes[2]);
-// }
-
-// function fillLibrary(library) {
-//   // for (let i = 0; i < library.length; i += 1) {
-//   //   createBookCard(library[i]);
-//   // }
-//   library.forEach((book) => createBookCard(book));
-// }
+function resetGrid() {
+  booksGrid.innerHTML = "";
+}
