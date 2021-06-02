@@ -73,8 +73,10 @@ function getInputValue(e) {
 
   const createdBook = new Book(titleInputVal, authorInputVal, pagesInputVal);
 
-  // addBookToLibrary(createdBook);
-  createBookCard(createdBook);
+  let shouldAddOrNot = addBookToLibrary(createdBook);
+  if (shouldAddOrNot) {
+    createBookCard(createdBook);
+  }
 
   clearFields();
 
