@@ -6,99 +6,16 @@ const myLibrary = [];
 
 class Book {
   constructor(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    this.title = form.title.value;
+    this.author = form.author.value;
+    this.pages = form.pages.value;
+    this.read = form.read.checked;
   }
 }
 
 Book.prototype.toggle = function () {
   this.read = !this.read;
 };
-
-// class UI {
-//   static fillLibrary() {
-//     const storedBooks = [
-//       {
-//         title: "The Song Of Achilles",
-//         author: "Madeline Miller",
-//         pages: 416,
-//         read: false,
-//       },
-//       {
-//         title: "The Picture of Dorian Gray",
-//         author: "Oscar Wilde",
-//         pages: 176,
-//         read: true,
-//       },
-//     ];
-
-//     const books = storedBooks;
-
-//     books.forEach((book) => UI.createBookCard(book));
-//   }
-
-//   static createBookCard(book) {
-//     const bookCard = document.createElement("div");
-//     const title = document.createElement("h2");
-//     const author = document.createElement("h3");
-//     const pages = document.createElement("h3");
-//     const readButton = document.createElement("button");
-//     const deleteButton = document.createElement("button");
-
-//     bookCard.classList.add("book-card");
-//     title.classList.add("book-text");
-//     author.classList.add("book-text");
-//     pages.classList.add("book-text");
-//     readButton.classList.add("button");
-//     deleteButton.classList.add("button");
-//     deleteButton.classList.add("deleteButton");
-
-//     title.textContent = book.title;
-//     author.textContent = `by ${book.author}`;
-//     pages.textContent = `${book.pages} pages`;
-//     deleteButton.textContent = "Delete";
-//     readButton.style.width = "1fr";
-//     if (document.getElementById("is-read").checked || book.read) {
-//       readButton.textContent = "Read";
-//       readButton.classList.add("read-button");
-//     } else {
-//       readButton.textContent = "Not Read";
-//       readButton.classList.add("not-read-button");
-//     }
-
-//     booksGrid.appendChild(bookCard);
-//     bookCard.appendChild(title);
-//     bookCard.appendChild(author);
-//     bookCard.appendChild(pages);
-//     bookCard.appendChild(readButton);
-//     bookCard.appendChild(deleteButton);
-
-//     // add toggle ability to each book 'read' button on click
-//     // readButton.addEventListener("click", () => {
-//     //   console.log("hello" + this);
-//     //   book.read = !book.read;
-//     //   // UI.fillLibrary();
-//     // });
-//   }
-
-//   static deleteBook(el) {
-//     if (el.classList.contains("deleteButton")) {
-//       el.parentElement.remove();
-//     }
-//   }
-
-//   static readBookToggle(el) {
-//     if (el.classList.contains("readButton")) {
-//       console.log("hello");
-//     }
-//   }
-
-//   static clearFields() {
-//     inputs.forEach((input) => (input.value = ""));
-//   }
-// }
 
 function fillLibrary() {
   resetGrid();
