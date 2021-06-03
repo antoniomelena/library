@@ -13,7 +13,7 @@ class Book {
   }
 }
 
-Book.prototype.toggle = () => {
+Book.prototype.toggle = function () {
   this.read = !this.read;
 };
 
