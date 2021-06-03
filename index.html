@@ -28,9 +28,13 @@
           placeholder="Number of Pages"
           required
         />
-        <div class="read-checkbox">
-          <label for="is-read">Read?</label>
-          <input type="checkbox" id="is-read" name="read" />
+        <div class="selectOption">
+          <label for="selectOption">Read?</label>
+          <select id="select" name="select" onchange="populate(this.id)">
+            <option value=""></option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
         </div>
         <button type="submit" id="submitButton">Submit</button>
       </div>

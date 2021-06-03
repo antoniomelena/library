@@ -13,7 +13,7 @@ class Book {
   }
 }
 
-Book.prototype.toggle = function () {
+Book.prototype.toggle = () => {
   this.read = !this.read;
 };
 
@@ -64,16 +64,32 @@ function clearFields() {
   inputs.forEach((input) => (input.value = ""));
 }
 
+function populate() {
+  const selection = document.getElementById("select");
+  if (selection.value === "Yes") {
+    return true;
+  }
+  if (selection.value === "No") {
+    return false;
+  }
+}
+
 function getInputValue(e) {
   e.preventDefault();
 
   const titleInputVal = document.getElementById("title").value;
   const authorInputVal = document.getElementById("author").value;
   const pagesInputVal = document.getElementById("pages").value;
+  const readOrNot = populate();
 
-  const createdBook = new Book(titleInputVal, authorInputVal, pagesInputVal);
+  const createdBook = new Book(
+    titleInputVal,
+    authorInputVal,
+    pagesInputVal,
+    readOrNot
+  );
 
-  let shouldAddOrNot = addBookToLibrary(createdBook);
+  const shouldAddOrNot = addBookToLibrary(createdBook);
   if (shouldAddOrNot) {
     createBookCard(createdBook);
   }
