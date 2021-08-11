@@ -34,7 +34,12 @@ function addBookToLibrary(newBook) {
   return true;
 }
 
-const bookOne = new Book("The Song Of Achilles", "Madeline Miller", 416, false);
+const bookOne = new Book(
+  "The Girl With The Dragon Tattoo",
+  "Stieg Larsson",
+  416,
+  false
+);
 const bookTwo = new Book(
   "The Picture of Dorian Gray",
   "Oscar Wilde",

@@ -1,10 +1,140 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
 body {
-  background-color: rgb(46, 46, 46);
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Start */
+
+body {
+  background-color: rgb(68, 68, 68);
+  padding: 10vh;
 }
 
 h1 {
-  color: white;
   margin: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2rem;
+  color: white;
 }
 
 .bg-modal {
@@ -39,13 +169,13 @@ h1 {
 }
 
 input {
-  width: 50%;
+  width: 75%;
   display: block;
   margin: 15px auto;
 }
 
 img {
-  width: 100px;
+  width: 130px;
 }
 
 .button,
@@ -54,8 +184,8 @@ img {
   letter-spacing: 1px;
   text-decoration: none;
   color: white;
-  padding: 1rem;
-  background-color: #009579;
+  padding: 12px;
+  background-color: darkcyan;
   border: none;
   border-radius: 4px;
   margin: 1rem;
@@ -67,11 +197,11 @@ img {
 }
 
 .button:hover {
-  background-color: #008168;
+  background-color: #23696b;
 }
 
 .button:active {
-  background-color: #005544;
+  background-color: #039979;
 }
 
 .books-grid {
@@ -83,7 +213,7 @@ img {
 
 .book-card {
   padding-top: 2rem;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.75);
   box-shadow: 5px 5px 1rem rgba(0, 0, 0, 0.2);
@@ -92,10 +222,11 @@ img {
 
 .book-text {
   padding: 0.5rem;
+  font-size: large;
 }
 
 .read-button {
-  background-color: cadetblue;
+  background-color: rgb(22, 3, 190);
 }
 
 .read-button:hover {
@@ -107,5 +238,5 @@ img {
 }
 
 .not-read-button:hover {
-  background-color: rgb(87, 144, 146);
+  background-color: rgb(55, 91, 145);
 }
