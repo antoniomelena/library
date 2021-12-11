@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="main">
-      <h1>Library</h1>
+      <h1>Local Library</h1>
       <a href="#" id="addBookButton" class="button">Add A Book</a>
       <div class="books-grid"></div>
     </div>
@@ -29,14 +29,14 @@
           required
         />
         <div class="selectOption">
-          <label for="selectOption">Read?</label>
+          <label for="selectOption">Finished?</label>
           <select id="select" name="select" onchange="populate(this.id)">
             <option value=""></option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
         </div>
-        <button type="submit" id="submitButton">Submit</button>
+        <button type="submit" id="submitButton" class="button">Submit</button>
       </div>
     </form>
     <script src="script.js"></script>

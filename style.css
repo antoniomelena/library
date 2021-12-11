@@ -124,17 +124,35 @@ table {
 }
 
 /* Start */
+:root {
+  --primary: rgb(50, 120, 210);
+  --secondary: rgb(139, 125, 135);
+  --success: rgb(50, 190, 100);
+  --danger: rgb(198, 16, 63);
+  --info: rgb(117, 152, 193);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 
 body {
   background-color: rgb(68, 68, 68);
-  padding: 10vh;
+  font-size: 1.3125rem;
+  line-height: 1.6;
 }
 
 h1 {
-  margin: 2rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 2rem;
-  color: white;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 0;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
 .bg-modal {
@@ -178,30 +196,28 @@ img {
   width: 130px;
 }
 
-.button,
-#submitButton {
-  display: inline;
-  letter-spacing: 1px;
+.button {
   text-decoration: none;
-  color: white;
-  padding: 12px;
-  background-color: darkcyan;
-  border: none;
+  color: #fff;
+  letter-spacing: 1px;
   border-radius: 4px;
-  margin: 1rem;
-  overflow: hidden;
-  font-family: "Quicksand", Times, serif;
-  font-size: 1.5rem;
-  font-weight: 100;
+  font-size: 1rem;
   cursor: pointer;
+  padding: 5px;
 }
 
 .button:hover {
-  background-color: #23696b;
+  opacity: 0.8;
 }
 
-.button:active {
-  background-color: #039979;
+.button + .button {
+  margin-left: 10px;
+}
+
+#addBookButton,
+#submitButton {
+  display: inline;
+  background-color: var(--primary);
 }
 
 .books-grid {
@@ -216,27 +232,24 @@ img {
   border: 2px solid white;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.75);
-  box-shadow: 5px 5px 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 8px 0 rgba(255, 255, 255, 0.2);
   text-align: center;
 }
 
-.book-text {
-  padding: 0.5rem;
-  font-size: large;
+.book-card:hover {
+  box-shadow: 0 8px 14px 0 rgba(255, 255, 255, 0.2);
 }
 
-.read-button {
-  background-color: rgb(22, 3, 190);
-}
-
-.read-button:hover {
-  background-color: darkred;
-}
-
-.not-read-button {
-  background-color: firebrick;
-}
-
+.read-button,
 .not-read-button:hover {
-  background-color: rgb(55, 91, 145);
+  background-color: var(--success);
+}
+
+.not-read-button,
+.read-button:hover {
+  background-color: var(--secondary);
+}
+
+.deleteButton {
+  background-color: var(--danger);
 }

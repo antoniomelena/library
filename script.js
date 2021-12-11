@@ -115,8 +115,8 @@ function deleteBook(el) {
 function createBookCard(book) {
   const bookCard = document.createElement("div");
   const title = document.createElement("h2");
-  const author = document.createElement("h3");
-  const pages = document.createElement("h3");
+  const author = document.createElement("p");
+  const pages = document.createElement("p");
   const readButton = document.createElement("button");
   const deleteButton = document.createElement("button");
 
