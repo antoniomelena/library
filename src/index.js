@@ -1,3 +1,5 @@
+import "./style.css";
+
 const addBook = document.getElementById("addBookButton");
 const popUp = document.querySelector(".bg-modal");
 const inputs = document.querySelectorAll("input");
