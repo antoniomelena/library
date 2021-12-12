@@ -1,7 +1,6 @@
-/* Start */
 :root {
   --primary: rgb(50, 120, 210);
-  --secondary: rgb(139, 125, 135);
+  --secondary: rgb(146, 138, 144);
   --success: rgb(50, 190, 100);
   --warning: rgb(254, 192, 45);
   --danger: rgb(198, 16, 63);
@@ -20,7 +19,7 @@
 body {
   background-color: rgb(68, 68, 68);
   font-size: 1.3125rem;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 h1 {
@@ -29,6 +28,10 @@ h1 {
   margin-top: 0;
   font-weight: 800;
   line-height: 1.5;
+}
+
+p {
+  margin-top: 0;
 }
 
 .container {
@@ -108,12 +111,17 @@ img {
 }
 
 .books-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
 }
 
 .book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   border: 2px solid white;
   padding: 1em;
   border-radius: 5px;
@@ -124,6 +132,10 @@ img {
 
 .book-card:hover {
   box-shadow: 0 8px 14px 0 rgba(255, 255, 255, 0.2);
+}
+
+.book-title {
+  margin-top: 0;
 }
 
 .read-button,
@@ -138,4 +150,12 @@ img {
 
 .deleteButton {
   background-color: var(--danger);
+}
+
+@media (min-width: 750px) {
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
 }

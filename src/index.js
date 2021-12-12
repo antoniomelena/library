@@ -114,6 +114,7 @@ function deleteBook(el) {
 
 function createBookCard(book) {
   const bookCard = document.createElement("div");
+  const bookButtons = document.createElement("div");
   const title = document.createElement("h2");
   const author = document.createElement("p");
   const pages = document.createElement("p");
@@ -121,7 +122,8 @@ function createBookCard(book) {
   const deleteButton = document.createElement("button");
 
   bookCard.classList.add("book-card");
-  title.classList.add("book-text");
+  bookButtons.classList.add("book-buttons");
+  title.classList.add("book-title");
   author.classList.add("book-text");
   pages.classList.add("book-text");
   readButton.classList.add("button");
@@ -145,8 +147,9 @@ function createBookCard(book) {
   bookCard.appendChild(title);
   bookCard.appendChild(author);
   bookCard.appendChild(pages);
-  bookCard.appendChild(readButton);
-  bookCard.appendChild(deleteButton);
+  bookButtons.appendChild(readButton);
+  bookButtons.appendChild(deleteButton);
+  bookCard.appendChild(bookButtons);
 
   clearFields();
 

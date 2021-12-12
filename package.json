@@ -1,0 +1,24 @@
+{
+  "name": "local-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniomelena/library.git"
+  },
+  "author": "Antonio Melena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniomelena/library/issues"
+  },
+  "homepage": "https://github.com/antoniomelena/library#readme",
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
