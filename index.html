@@ -14,33 +14,35 @@
         <div class="books-grid"></div>
       </div>
     </div>
-    <form class="bg-modal">
+    <div class="modal">
       <div class="modal-content">
         <div class="close">+</div>
         <img
           src="https://img.icons8.com/clouds/2x/library.png"
           alt="Library Icon"
         />
-        <input id="title" type="text" placeholder="Title" required />
-        <input id="author" type="text" placeholder="Author" required />
-        <input
-          id="pages"
-          type="number"
-          min="0"
-          placeholder="Number of Pages"
-          required
-        />
-        <div class="selectOption">
-          <label for="selectOption">Finished?</label>
-          <select id="select" name="select" onchange="populate(this.id)">
+        <form class="add" id="add">
+          <input type="text" placeholder="Title" name="title" required />
+          <input type="text" placeholder="Author" name="author" required />
+          <input
+            type="number"
+            name="pages"
+            min="0"
+            placeholder="Number of Pages"
+            required
+          />
+          <!-- <div class="read-container"> -->
+          <label for="read">Finished?</label>
+          <select name="read" id="read" form="add">
             <option value=""></option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
-        </div>
-        <button type="submit" id="submitButton" class="button">Submit</button>
+          <!-- </div> -->
+          <button type="submit" id="submitButton" class="button">Submit</button>
+        </form>
       </div>
-    </form>
+    </div>
     <script src="bundle.js"></script>
   </body>
 </html>
