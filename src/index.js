@@ -3,10 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
   getFirestore,
-  doc,
   collection,
   onSnapshot,
-  getDocs,
   addDoc,
   deleteDoc,
 } from "firebase/firestore";
@@ -31,7 +29,7 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 
 // Collection Reference
-const collectionReference = collection(db, "books");
+const colRef = collection(db, "books");
 
 import "./style.css";
 
@@ -39,21 +37,23 @@ const addBookForm = document.querySelector(".add");
 const addBookButton = document.getElementById("addBookButton");
 const modal = document.querySelector(".modal");
 const booksGrid = document.querySelector(".books-grid");
-const books = [];
+// const books = [];
 
 // Get Real Time Collection Data
-onSnapshot(collectionReference, (snapshot) => {
+onSnapshot(colRef, (snapshot) => {
+  const books = [];
   snapshot.docs.forEach((doc) => {
     books.push({ ...doc.data(), id: doc.id });
   });
-  console.log(books);
+  fillLibrary(books);
+  // console.log("Books in snapshot", books);
 });
 
 // Adding Books
 addBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  addDoc(collectionReference, {
+  addDoc(colRef, {
     title: addBookForm.title.value,
     author: addBookForm.author.value,
     pages: parseInt(addBookForm.pages.value),
@@ -87,15 +87,21 @@ addBookForm.addEventListener("submit", (e) => {
 // Book.prototype.toggle = function () {
 //   this.read = !this.read;
 // };
+// function resetGrid() {
+//   booksGrid.innerHTML = "";
+//   console.log("grid reset");
+// }
 
-function fillLibrary() {
-  console.log("loaded");
-  resetGrid();
-  books.forEach((book) => createBookCard(book));
+function fillLibrary(books) {
+  // console.log("loaded");
+  // resetGrid();
+  // console.log("Books in fillLibrary", books);
+  books.forEach((book) => {
+    createBookCard(book);
+    // console.log("hello");
+    // console.log(book);
+  });
 }
-// fillLibrary();
-
-document.addEventListener("DOMContentLoaded", fillLibrary);
 
 // function addBookToLibrary(newBook) {
 //   if (myLibrary.some((book) => book.title === newBook.title)) {
@@ -224,8 +230,4 @@ function createBookCard(book) {
   //   book.toggle();
   //   fillLibrary();
   // });
-}
-
-function resetGrid() {
-  booksGrid.innerHTML = "";
 }
