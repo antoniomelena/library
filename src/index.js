@@ -112,41 +112,6 @@ function closeModal() {
 }
 document.querySelector(".close").addEventListener("click", closeModal);
 
-// function populate() {
-//   const selection = document.getElementById("select");
-//   if (selection.value === "Yes") {
-//     return true;
-//   }
-//   if (selection.value === "No") {
-//     return false;
-//   }
-// }
-
-// function getInputValue(e) {
-//   e.preventDefault();
-
-//   const titleInputVal = document.getElementById("title").value;
-//   const authorInputVal = document.getElementById("author").value;
-//   const pagesInputVal = document.getElementById("pages").value;
-//   const readOrNot = populate();
-
-//   const createdBook = new Book(
-//     titleInputVal,
-//     authorInputVal,
-//     pagesInputVal,
-//     readOrNot
-//   );
-
-//   const shouldAddOrNot = addBookToLibrary(createdBook);
-//   if (shouldAddOrNot) {
-//     addRow(createdBook);
-//   }
-
-//   clearFields();
-
-//   closeModal();
-// }
-
 function addRow(book) {
   // const booksTable = document.querySelector(".table");
   const booksTableBody = document.querySelector(".table-body");
@@ -164,13 +129,13 @@ function addRow(book) {
   let pagesCellText = document.createTextNode(book.pages);
   pagesCell.appendChild(pagesCellText);
 
-  let readCell = newRow.insertCell(-1);
-  let readButton = document.createElement("button");
-  readButton.classList.add("button");
-  readButton.classList.add("button--success");
-  let readButtonText = document.createTextNode("Read");
-  readButton.appendChild(readButtonText);
-  readCell.appendChild(readButton);
+  // let readCell = newRow.insertCell(-1);
+  // let readButton = document.createElement("button");
+  // readButton.classList.add("button");
+  // readButton.classList.add("button--success");
+  // let readButtonText = document.createTextNode("Read");
+  // readButton.appendChild(readButtonText);
+  // readCell.appendChild(readButton);
 
   let deleteCell = newRow.insertCell(-1);
   let deleteButton = document.createElement("button");
