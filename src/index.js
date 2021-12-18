@@ -36,7 +36,6 @@ import "./style.css";
 const addBookForm = document.querySelector(".add");
 const addBookButton = document.getElementById("addBookButton");
 const modal = document.querySelector(".modal");
-const booksGrid = document.querySelector(".books-grid");
 // const books = [];
 
 // Get Real Time Collection Data
@@ -88,7 +87,7 @@ addBookForm.addEventListener("submit", (e) => {
 //   this.read = !this.read;
 // };
 // function resetGrid() {
-//   booksGrid.innerHTML = "";
+//   booksTableBody.innerHTML = "";
 //   console.log("grid reset");
 // }
 
@@ -97,7 +96,7 @@ function fillLibrary(books) {
   // resetGrid();
   // console.log("Books in fillLibrary", books);
   books.forEach((book) => {
-    createBookCard(book);
+    addRow(book);
     // console.log("hello");
     // console.log(book);
   });
@@ -131,12 +130,14 @@ function fillLibrary(books) {
 // OPEN MODAL
 function openModal() {
   modal.style.display = "flex";
+  document.body.classList.add("overflow-hidden");
 }
 addBookButton.addEventListener("click", openModal);
 
 // CLOSE MODAL
 function closeModal() {
   modal.style.display = "none";
+  document.body.classList.remove("overflow-hidden");
 }
 document.querySelector(".close").addEventListener("click", closeModal);
 
@@ -167,7 +168,7 @@ document.querySelector(".close").addEventListener("click", closeModal);
 
 //   const shouldAddOrNot = addBookToLibrary(createdBook);
 //   if (shouldAddOrNot) {
-//     createBookCard(createdBook);
+//     addRow(createdBook);
 //   }
 
 //   clearFields();
@@ -183,51 +184,78 @@ document.querySelector(".close").addEventListener("click", closeModal);
 //   }
 // }
 
-function createBookCard(book) {
-  const bookCard = document.createElement("div");
-  const bookButtons = document.createElement("div");
-  const title = document.createElement("h2");
-  const author = document.createElement("p");
-  const pages = document.createElement("p");
-  // const readButton = document.createElement("button");
-  // const deleteButton = document.createElement("button");
+// function addRow(book) {
+//   const tableRow = document.createElement("tr");
+//   const bookButtons = document.createElement("div");
+//   const title = document.createElement("td");
+//   const author = document.createElement("td");
+//   const pages = document.createElement("td");
+//   // const readButton = document.createElement("button");
+//   // const deleteButton = document.createElement("button");
 
-  bookCard.classList.add("book-card");
-  bookButtons.classList.add("book-buttons");
-  title.classList.add("book-title");
-  author.classList.add("book-text");
-  pages.classList.add("book-text");
-  // readButton.classList.add("button");
-  // deleteButton.classList.add("button");
-  // deleteButton.classList.add("deleteButton");
+//   tableRow.classList.add("book-card");
+//   bookButtons.classList.add("book-buttons");
+//   title.classList.add("book-title");
+//   author.classList.add("book-text");
+//   pages.classList.add("book-text");
+//   // readButton.classList.add("button");
+//   // deleteButton.classList.add("button");
+//   // deleteButton.classList.add("deleteButton");
 
-  title.textContent = book.title;
-  author.textContent = `by ${book.author}`;
-  pages.textContent = `${book.pages} pages`;
-  // deleteButton.textContent = "Delete";
-  // readButton.style.width = "1fr";
-  // if (book.read) {
-  //   readButton.textContent = "Read";
-  //   readButton.classList.add("read-button");
-  // } else {
-  //   readButton.textContent = "Not Read";
-  //   readButton.classList.add("not-read-button");
-  // }
+//   title.textContent = book.title;
+//   author.textContent = `by ${book.author}`;
+//   pages.textContent = `${book.pages} pages`;
+//   // deleteButton.textContent = "Delete";
+//   // readButton.style.width = "1fr";
+//   // if (book.read) {
+//   //   readButton.textContent = "Read";
+//   //   readButton.classList.add("read-button");
+//   // } else {
+//   //   readButton.textContent = "Not Read";
+//   //   readButton.classList.add("not-read-button");
+//   // }
 
-  bookCard.appendChild(title);
-  bookCard.appendChild(author);
-  bookCard.appendChild(pages);
-  booksGrid.appendChild(bookCard);
-  // bookButtons.appendChild(readButton);
-  // bookButtons.appendChild(deleteButton);
-  // bookCard.appendChild(bookButtons);
+//   tableRow.appendChild(title);
+//   tableRow.appendChild(author);
+//   tableRow.appendChild(pages);
+//   console.log(tableRow);
+//   console.log(booksTableBody);
+//   // booksTableBody.appendChild(tableRow);
+//   // bookButtons.appendChild(readButton);
+//   // bookButtons.appendChild(deleteButton);
+//   // bookCard.appendChild(bookButtons);
 
-  // deleteButton.addEventListener("click", (e) => {
-  //   deleteBook(e.target);
-  // });
+//   // deleteButton.addEventListener("click", (e) => {
+//   //   deleteBook(e.target);
+//   // });
 
-  // readButton.addEventListener("click", () => {
-  //   book.toggle();
-  //   fillLibrary();
-  // });
+//   // readButton.addEventListener("click", () => {
+//   //   book.toggle();
+//   //   fillLibrary();
+//   // });
+// }
+function addRow(book) {
+  // const booksTable = document.querySelector(".table");
+  const booksTableBody = document.querySelector(".table-body");
+  const newRow = booksTableBody.insertRow(-1);
+
+  let titleCell = newRow.insertCell(-1);
+  let titleCellText = document.createTextNode(book.title);
+  titleCell.appendChild(titleCellText);
+
+  let authorCell = newRow.insertCell(-1);
+  let authorCellText = document.createTextNode(book.author);
+  authorCell.appendChild(authorCellText);
+
+  let pagesCell = newRow.insertCell(-1);
+  let pagesCellText = document.createTextNode(book.pages);
+  pagesCell.appendChild(pagesCellText);
+
+  let deleteCell = newRow.insertCell(-1);
+  let deleteButton = document.createElement("button");
+  deleteButton.classList.add("button");
+  deleteButton.classList.add("button--danger");
+  let deleteButtonText = document.createTextNode("Delete");
+  deleteButton.appendChild(deleteButtonText);
+  deleteCell.appendChild(deleteButton);
 }

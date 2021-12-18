@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+
 :root {
   --primary: rgb(50, 120, 210);
   --secondary: rgb(146, 138, 144);
@@ -17,21 +19,24 @@
 }
 
 body {
-  background-color: rgb(68, 68, 68);
+  font-family: "Lato", sans-serif;
   font-size: 1.3125rem;
   line-height: 1.5;
 }
 
 h1 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
   margin-top: 0;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.5;
+}
+
+a {
+  color: rgb(39, 128, 204);
 }
 
 p {
   margin-top: 0;
+  font-size: 1.3125rem;
 }
 
 .container {
@@ -51,14 +56,19 @@ input {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   display: none;
 }
 
+.overflow-hidden {
+  overflow-y: hidden;
+}
+
 .modal-content {
-  min-width: 300px;
+  min-width: 400px;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 4px;
   text-align: center;
@@ -104,6 +114,11 @@ img {
   margin-left: 10px;
 }
 
+.button--danger {
+  color: #fff;
+  background-color: var(--danger);
+}
+
 #addBookButton {
   margin: 0 auto;
 }
@@ -113,28 +128,28 @@ img {
   background-color: var(--primary);
 }
 
-.books-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-}
-
-.book-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+.table {
   width: 100%;
-  border: 2px solid white;
-  padding: 1em;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.75);
-  box-shadow: 0 5px 8px 0 rgba(255, 255, 255, 0.2);
-  text-align: center;
+  border: none;
+  border-spacing: 0;
 }
 
-.book-card:hover {
-  box-shadow: 0 8px 14px 0 rgba(255, 255, 255, 0.2);
+.table-heading {
+  letter-spacing: 1;
+  font-size: 1.1rem;
+}
+
+.table th,
+.table td {
+  padding: 1.25rem;
+}
+
+.table th {
+  border-bottom: 2px solid black;
+}
+
+.table td {
+  border-bottom: 1px solid var(--secondary);
 }
 
 .book-title {
@@ -156,9 +171,4 @@ img {
 }
 
 @media (min-width: 750px) {
-  .books-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-  }
 }
