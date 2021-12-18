@@ -7,36 +7,6 @@
     <link rel="stylesheet" href="../src/style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Local Library</h1>
-      <p>
-        This is a project I built for
-        <a href="https://www.theodinproject.com/" target="_blank"
-          >The Odin Project</a
-        >
-        where I originally had to make a library using Object Constructors. I
-        completed that version and decided to implement Firebase Firestore to
-        store all books inside an external database. You can also view the
-        <a href="https://github.com/antoniomelena/library" target="_blank"
-          >Github</a
-        >
-        repository of this project.
-      </p>
-      <a href="#" id="addBookButton" class="button">Add A Book</a>
-      <div class="container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th class="table-heading">Title</th>
-              <th class="table-heading">Author</th>
-              <th class="table-heading">Pages</th>
-              <th class="table-heading"></th>
-            </tr>
-          </thead>
-          <tbody class="table-body"></tbody>
-        </table>
-      </div>
-    </div>
     <div class="modal">
       <div class="modal-content">
         <div class="close">+</div>
@@ -64,6 +34,37 @@
           <!-- </div> -->
           <button type="submit" id="submitButton" class="button">Submit</button>
         </form>
+      </div>
+    </div>
+    <div class="container">
+      <h1>Local Library</h1>
+      <p>
+        This is a project I built for
+        <a href="https://www.theodinproject.com/" target="_blank"
+          >The Odin Project</a
+        >
+        where I originally had to make a library using Object Constructors. I
+        completed that version and decided to implement Firebase Firestore to
+        store all books inside an external database. You can also view the
+        <a href="https://github.com/antoniomelena/library" target="_blank"
+          >Github</a
+        >
+        repository of this project.
+      </p>
+      <a href="#" id="addBookButton" class="button">Add A Book</a>
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="table-heading">Title</th>
+              <th class="table-heading">Author</th>
+              <th class="table-heading">Pages</th>
+              <th class="table-heading"></th>
+              <th class="table-heading"></th>
+            </tr>
+          </thead>
+          <tbody class="table-body"></tbody>
+        </table>
       </div>
     </div>
     <script src="bundle.js"></script>

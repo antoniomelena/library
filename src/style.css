@@ -119,6 +119,14 @@ img {
   background-color: var(--danger);
 }
 
+.button--success {
+  background-color: var(--success);
+}
+
+.button--secondary {
+  background-color: var(--secondary);
+}
+
 #addBookButton {
   margin: 0 auto;
 }

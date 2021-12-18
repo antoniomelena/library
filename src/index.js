@@ -1,3 +1,4 @@
+import "./style.css";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -7,6 +8,7 @@ import {
   onSnapshot,
   addDoc,
   deleteDoc,
+  doc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -31,8 +33,6 @@ const db = getFirestore();
 // Collection Reference
 const colRef = collection(db, "books");
 
-import "./style.css";
-
 const addBookForm = document.querySelector(".add");
 const addBookButton = document.getElementById("addBookButton");
 const modal = document.querySelector(".modal");
@@ -41,11 +41,10 @@ const modal = document.querySelector(".modal");
 // Get Real Time Collection Data
 onSnapshot(colRef, (snapshot) => {
   const books = [];
-  snapshot.docs.forEach((doc) => {
-    books.push({ ...doc.data(), id: doc.id });
+  snapshot.docs.forEach((x) => {
+    books.push({ ...x.data(), id: x.id });
   });
   fillLibrary(books);
-  // console.log("Books in snapshot", books);
 });
 
 // Adding Books
@@ -92,40 +91,12 @@ addBookForm.addEventListener("submit", (e) => {
 // }
 
 function fillLibrary(books) {
-  // console.log("loaded");
-  // resetGrid();
-  // console.log("Books in fillLibrary", books);
+  document.querySelector(".table-body").innerHTML = "";
+
   books.forEach((book) => {
     addRow(book);
-    // console.log("hello");
-    // console.log(book);
   });
 }
-
-// function addBookToLibrary(newBook) {
-//   if (myLibrary.some((book) => book.title === newBook.title)) {
-//     return false;
-//   }
-//   myLibrary.push(newBook);
-//   return true;
-// }
-
-// const bookOne = new Book(
-//   "The Girl With The Dragon Tattoo",
-//   "Stieg Larsson",
-//   416,
-//   false
-// );
-// const bookTwo = new Book(
-//   "The Picture of Dorian Gray",
-//   "Oscar Wilde",
-//   176,
-//   true
-// );
-// const bookThree = new Book("A Little Life", "Hanya Yanagihara", 800, false);
-// addBookToLibrary(bookOne);
-// addBookToLibrary(bookTwo);
-// addBookToLibrary(bookThree);
 
 // OPEN MODAL
 function openModal() {
@@ -176,64 +147,6 @@ document.querySelector(".close").addEventListener("click", closeModal);
 //   closeModal();
 // }
 
-// modal.addEventListener("submit", getInputValue);
-
-// function deleteBook(el) {
-//   if (el.classList.contains("deleteButton")) {
-//     el.parentElement.remove();
-//   }
-// }
-
-// function addRow(book) {
-//   const tableRow = document.createElement("tr");
-//   const bookButtons = document.createElement("div");
-//   const title = document.createElement("td");
-//   const author = document.createElement("td");
-//   const pages = document.createElement("td");
-//   // const readButton = document.createElement("button");
-//   // const deleteButton = document.createElement("button");
-
-//   tableRow.classList.add("book-card");
-//   bookButtons.classList.add("book-buttons");
-//   title.classList.add("book-title");
-//   author.classList.add("book-text");
-//   pages.classList.add("book-text");
-//   // readButton.classList.add("button");
-//   // deleteButton.classList.add("button");
-//   // deleteButton.classList.add("deleteButton");
-
-//   title.textContent = book.title;
-//   author.textContent = `by ${book.author}`;
-//   pages.textContent = `${book.pages} pages`;
-//   // deleteButton.textContent = "Delete";
-//   // readButton.style.width = "1fr";
-//   // if (book.read) {
-//   //   readButton.textContent = "Read";
-//   //   readButton.classList.add("read-button");
-//   // } else {
-//   //   readButton.textContent = "Not Read";
-//   //   readButton.classList.add("not-read-button");
-//   // }
-
-//   tableRow.appendChild(title);
-//   tableRow.appendChild(author);
-//   tableRow.appendChild(pages);
-//   console.log(tableRow);
-//   console.log(booksTableBody);
-//   // booksTableBody.appendChild(tableRow);
-//   // bookButtons.appendChild(readButton);
-//   // bookButtons.appendChild(deleteButton);
-//   // bookCard.appendChild(bookButtons);
-
-//   // deleteButton.addEventListener("click", (e) => {
-//   //   deleteBook(e.target);
-//   // });
-
-//   // readButton.addEventListener("click", () => {
-//   //   book.toggle();
-//   //   fillLibrary();
-//   // });
-// }
 function addRow(book) {
   // const booksTable = document.querySelector(".table");
   const booksTableBody = document.querySelector(".table-body");
@@ -251,6 +164,14 @@ function addRow(book) {
   let pagesCellText = document.createTextNode(book.pages);
   pagesCell.appendChild(pagesCellText);
 
+  let readCell = newRow.insertCell(-1);
+  let readButton = document.createElement("button");
+  readButton.classList.add("button");
+  readButton.classList.add("button--success");
+  let readButtonText = document.createTextNode("Read");
+  readButton.appendChild(readButtonText);
+  readCell.appendChild(readButton);
+
   let deleteCell = newRow.insertCell(-1);
   let deleteButton = document.createElement("button");
   deleteButton.classList.add("button");
@@ -258,4 +179,10 @@ function addRow(book) {
   let deleteButtonText = document.createTextNode("Delete");
   deleteButton.appendChild(deleteButtonText);
   deleteCell.appendChild(deleteButton);
+
+  deleteButton.setAttribute("id", book.id);
+  deleteButton.addEventListener("click", (event) => {
+    const docRef = doc(db, "books", event.target.id);
+    deleteDoc(docRef);
+  });
 }
