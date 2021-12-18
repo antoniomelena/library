@@ -36,6 +36,7 @@ const colRef = collection(db, "books");
 const addBookForm = document.querySelector(".add");
 const addBookButton = document.getElementById("addBookButton");
 const modal = document.querySelector(".modal");
+const tableBody = document.querySelector(".table-body");
 // const books = [];
 
 // Get Real Time Collection Data
@@ -90,8 +91,14 @@ addBookForm.addEventListener("submit", (e) => {
 //   console.log("grid reset");
 // }
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
 function fillLibrary(books) {
-  document.querySelector(".table-body").innerHTML = "";
+  removeAllChildNodes(tableBody);
 
   books.forEach((book) => {
     addRow(book);
